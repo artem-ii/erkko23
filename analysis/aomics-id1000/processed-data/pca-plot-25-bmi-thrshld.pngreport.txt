@@ -1,0 +1,21 @@
+['REPORT: BMI threshold: 25   Shape of data: (312, 14)   Explained variance ratio: [0.27188917 0.18023215]   Top PC1 features:',                              PC1       PC2
+IST_intelligence_total  0.511162  0.080655
+IST_fluid               0.481714  0.077459
+IST_crystallised        0.431578  0.049808
+IST_memory              0.412949  0.081534
+background_SES          0.220992  0.000210
+NEO_O                   0.219794  0.014739
+NEO_C                   0.130725  0.136115
+NEO_E                   0.103249  0.479424
+NEO_A                   0.102212  0.241979
+BAS_fun                 0.083956  0.352622, 'Top PC2 features:',                              PC1       PC2
+NEO_E                   0.103249  0.479424
+BAS_drive               0.002242  0.434810
+BIS                     0.063988  0.394708
+NEO_N                   0.019789  0.386770
+BAS_fun                 0.083956  0.352622
+NEO_A                   0.102212  0.241979
+BAS_reward              0.054732  0.228986
+NEO_C                   0.130725  0.136115
+IST_memory              0.412949  0.081534
+IST_intelligence_total  0.511162  0.080655]
