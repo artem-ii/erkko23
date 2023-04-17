@@ -18,3 +18,9 @@ Interestingly, we have "emotional" and "cognitive" PCs again (see report files i
 TODO:
 1. Check if coloring works correctly of PCA scatters (probably already on normal PCA analysis)
 2. Look at how age is distributed (although the range is nicely small)
+
+### Apr 17, 2023
+@artem-ii
+
+1. Created separate files with plotting styles and clustering functions
+2. Tried BGM clustering, but it doesn't seem to converge, have to read more.
