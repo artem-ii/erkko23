@@ -139,7 +139,7 @@ def filter_by_bmi(bmi_threshold):
     with open(report_filename, 'w', encoding='utf-8') as f:
         f.write(str(report))
     f.close()
-    return report
+    return [pca, report]
 
 
 filter_by_bmi(30)
