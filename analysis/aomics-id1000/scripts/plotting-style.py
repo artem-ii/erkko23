@@ -73,11 +73,13 @@ def plot_centroids(centroids, weights=None, circle_color='w', cross_color='k'):
             y += 1
     else:
         legend_coordinates = [12.5, -5]
+'''
         plt.text(legend_coordinates[0], legend_coordinates[1],
                  "0: N = 127\n1: N = 34\n3: N = 15\n8: N = 52", fontsize=11,
                  color=cross_color,
                  zorder=11, alpha=1)
-
+'''
+        
 def plot_gaussian_mixture(clusterer, X, resolution=1000, show_ylabels=True):
     mins = X.min(axis=0) - 0.1
     maxs = X.max(axis=0) + 0.1
@@ -102,7 +104,7 @@ def plot_gaussian_mixture(clusterer, X, resolution=1000, show_ylabels=True):
                linewidths=1, colors='black', linestyles='dashed')
     
     ax.scatter(X[:, 0], X[:, 1],
-               c=data_num['Waist_cm'],
+               c=data_filtered['BMI'],
                alpha=1, s=25, cmap=cmap
               )
     plot_centroids(clusterer.means_, clusterer.weights_)
@@ -115,11 +117,13 @@ def plot_gaussian_mixture(clusterer, X, resolution=1000, show_ylabels=True):
     ax.tick_params(labelsize=18)
     ax.set_xticks([])
     ax.set_yticks([])
+    '''
     colorbar = fig.colorbar(scatter, ticks=[],
                             location='bottom',
                             anchor=(0.97, 3.25),
                             shrink=0.2, aspect=5)
     colorbar.set_label('Waist, cm', loc='center', size=12)
+    '''
     if SAVE_FILES:
         plt.savefig('plots/behavioural_clusters_cmap_detailed.svg')
 
