@@ -19,8 +19,7 @@ from sklearn.mixture import BayesianGaussianMixture
 n_components = 20
 
 
-def pca_and_bgm(df, filename, color, show_plot = False):
-    
+def pca_and_bgm(df, filename, color, bmi_vector, show_plot = False):
     pca = PCA(n_components=2)
     components = pca.fit_transform(df)
     bgm_on_pca_nobmi = BayesianGaussianMixture(n_components=n_components,
@@ -35,26 +34,30 @@ def pca_and_bgm(df, filename, color, show_plot = False):
 
 
     if NEW_MODEL:
-        bgm_on_pca_nobmi.fit(components_nobmi_30)
+        bgm_on_pca_nobmi.fit(components)
         cluster_list = list(zip(range(n_components), bgm_on_pca_nobmi.weights_))
     plot_gaussian_mixture(bgm_on_pca_nobmi, components)
-    
+    print(cluster_list)
     bgm_cluster_on_pca_nobmi = bgm_on_pca_nobmi.predict(components)
-    data_bgm_clustered_on_pca_nobmi = data_psy.copy()
+    print(bgm_cluster_on_pca_nobmi)
+    data_bgm_clustered_on_pca_nobmi = df.copy()
     data_bgm_clustered_on_pca_nobmi['bgm_pca_cluster'] = bgm_cluster_on_pca_nobmi
-    data_bgm_clustered_on_pca_nobmi.to_csv("analysis/processed_data/clustered_behavioral_AOMIC_pca_based_nobmi.csv")
-    return data_bgm_clustered_on_pca_nobmi
+    data_bgm_clustered_on_pca_nobmi['BMI'] = bmi_vector
+    data_bgm_clustered_on_pca_nobmi.to_csv("clustered_behavioral_AOMIC_pca_based_nobmi.csv")
+    return components
 
 def filter_by_bmi_bgm(bmi_threshold):
     data_psy_transformed_high_bmi = data_psy_transformed[
         data_filtered['BMI'] >= bmi_threshold]
-    
+    bmi_vector = data_filtered['BMI'][
+        data_filtered['BMI'] >= bmi_threshold]
     color_data = data_filtered[
         data_filtered['BMI'] >= bmi_threshold].loc[:, 'BMI']
     filename = "pca-plot-{0}-bmi-thrshld.png"
     pca = pca_and_bgm(data_psy_transformed_high_bmi,
                       filename.format(str(bmi_threshold)),
-                      color=color_data)
+                      color=color_data,
+                      bmi_vector=bmi_vector)
     relevant_features = pd.DataFrame(abs(pca.components_),
                                      columns=data_psy_transformed.columns,
                                      index=['PC1', 'PC2'])
@@ -83,11 +86,12 @@ def filter_by_bmi_bgm(bmi_threshold):
     with open(report_filename, 'w', encoding='utf-8') as f:
         f.write(str(report))
     f.close()
+    print(pca)
     return [pca, report]
 
 # %%
 
-print(filter_by_bmi_bgm(25))
+clustering_filtered = filter_by_bmi_bgm(25)
 
 
 

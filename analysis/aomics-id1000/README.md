@@ -35,3 +35,8 @@ TODO:
 1. Make a proper plot
 2. Create a table with subjects and their clusters
 3. Describe clusters - BMI and psychological variables
+
+### Apr 20, 2023
+@artem-ii
+
+1. Worked on plot and table with clusters
