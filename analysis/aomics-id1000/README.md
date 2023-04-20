@@ -24,3 +24,14 @@ TODO:
 
 1. Created separate files with plotting styles and clustering functions
 2. Tried BGM clustering, but it doesn't seem to converge, have to read more.
+
+### Apr 19, 2023
+@artem-ii
+
+1. Adjusted maximum iterations parameter for BGM model, model converged.
+2. Made initial plots.
+
+TODO:
+1. Make a proper plot
+2. Create a table with subjects and their clusters
+3. Describe clusters - BMI and psychological variables
